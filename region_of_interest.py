@@ -9,6 +9,7 @@ def show_entry_fields(name):
     name = e1.get()
     master.destroy()
     cv2.imwrite(name + ".png", imCrop)
+    cv2.resizeWindow("Image", 1920,1080)
     cv2.imshow("Image", imCrop)
     cv2.waitKey(0)
 
@@ -31,4 +32,5 @@ if __name__ == '__main__':
     e1.grid(row=0, column=1)
 
     Button(master, text='Show', command=show_entry_fields).grid(row=3, column=1, sticky=W, pady=4)
+    e1.focus_set()
     mainloop( )
