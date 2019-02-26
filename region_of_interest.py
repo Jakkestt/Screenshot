@@ -9,8 +9,7 @@ def show_entry_fields(name):
     name = e1.get()
     master.destroy()
     cv2.imwrite(name + ".png", imCrop)
-    cv2.resizeWindow("Image", 1920,1080)
-    cv2.imshow("Image", imCrop)
+    cv2.imshow(name, imCrop)
     cv2.waitKey(0)
 
 master.bind('<Return>', show_entry_fields)
@@ -18,6 +17,10 @@ master.bind('<Return>', show_entry_fields)
 if __name__ == '__main__':
     im = pyautogui.screenshot()
     im = cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
+
+    cv2.namedWindow("Image", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty("Image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    cv2.imshow("Image", im)
 
     fromCenter = False
     r = cv2.selectROI("Image", im, fromCenter)
